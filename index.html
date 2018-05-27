@@ -1,32 +1,219 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--  -->
-  <script src="https://mutafaf.github.io/TestResponsiveness/test_responsiveness.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Gloria+Hallelujah" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+  <link async rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <script src="responsive.js"></script>
+  <style type="text/css">
+    *{
+      border-radius: 0;
+    }
+    *:focus {
+      outline: none;
+    }
+    body { margin: 0; font-family: 'Roboto', sans-serif; background: #dcdcdc; overflow-x: hidden;}
+    form {
+      display: block;
+      margin-top: 0em;
+    }
+    .form-group {
+       margin: 16px;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-evenly;
+    }
+
+    .form-control {
+      display: block;
+      min-width: 60vw;
+      width: 600px;
+      font-size: 16px;
+      line-height: 1.25;
+      color: #464a4c;
+      background-color: #fff;
+      background-image: none;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 1px solid rgba(0,0,0,.15);
+      -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+      -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+
+      margin-bottom: 16px;
+      padding: 8px;
+      height: 13px;
+    }
+    .btn-submit {
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.25;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid transparent;
+      font-size: 16px;
+      -webkit-transition: all .2s ease-in-out;
+      -o-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+      color: #fff;
+      min-width: 30vw;
+      width: 300px;
+      max-width: 100vw;
+      height: 31px;
+      background: #4CAF50;
+      color: white;
+      padding: 0;
+      cursor: pointer;
+    }
+    .btn-wrapper {
+      flex-direction: row;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 520px;
+      align-items: center;
+    }
+    .change-device-btn{
+      cursor: pointer;
+      padding: 8px;
+      color: darkgreen;
+      background: #2196f3;
+      color: white;
+      border: 1px solid;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      margin: 0;
+    }
+    .header-bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 16px;
+      box-shadow: 0px 1px 4px -1px black;
+      padding: 0;
+      -webkit-transition: all .2s ease-in-out;
+      -o-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+      background: white;
+    }
+    .heading {
+      font-size: 32px;
+      width: 40vw;
+      min-width: 544px;
+      font-family: 'Gloria Hallelujah', sans-serif;
+      color: #4CAF50;
+      text-align: center;
+      height: 80px;
+    }
+    .to-test {
+      justify-content: center;
+      width: 50%;
+      min-width: 330px;
+      height: 80vh;
+      overflow: scroll;
+      box-shadow: 0px 0px 12px 2px gray;
+      box-shadow: 0 0 10px 0px #ffffff;
+      -webkit-transition: all .2s ease-in-out;
+      -o-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+      background: white;
+      margin: 16px auto;
+      margin-bottom: 48px;
+    }
+    #test-iframe {
+      width: 100%;
+      height: 100vh;
+    }
+    .small {
+
+      font-size: 12px;
+      position: relative;
+      top: -16px;
+      left: -25px;
+    }
+    .footer {
+      min-width: 100vw;
+      text-align: center;
+      background: #34404a;
+      padding: 9px;
+      font-size: 12px;
+      color: white;
+      position: fixed;
+      bottom: 0;
+    }
+    .device-lnr {font-size: 32px;}
+    .landscape {transform: rotate(90deg) translate(0px, 4px);}
+    .footer a {color: white;text-decoration: none; font-size: 13px;}
+  </style>
 </head>
 <body>
+  <div class="header-bar">
+    <div class="heading">
+      <div class="heading-main">
+      TestResponsiveness
+    </div>
+      <div class="small">A tool developed for responsive testing</div>
+    </div>
 
-<div id='btn-group-container'>
+    <div class='btn-wrapper'>
+      <button class="change-device-btn" onclick="change_device_type('d')">
+        <div class="device-lnr">
+          <span class="fa fa-desktop"></span>
+        </div>
+        Desktop</button>
+      <button class="change-device-btn" onclick="change_device_type('t')">
+        <div class="device-lnr">
+          <span class="fa fa-tablet-alt"></span>
+        </div>
+        Tablet</button>
+      <button class="change-device-btn" onclick="change_device_type('tl')">
+        <div class="device-lnr landscape">
+          <span class="fa fa-tablet-alt"></span>
+        </div>
+        Tablet Landscape</button>
+      <button class="change-device-btn" onclick="change_device_type('m')">
+        <div class="device-lnr">
+          <span class="fa fa-mobile-alt"></span>
+        </div>
+        Mobile</button>
+      <button class="change-device-btn" onclick="change_device_type('ml')">
+        <div class="device-lnr landscape">
+          <span class="fa fa-mobile-alt"></span>
+        </div>
+        Mobile Landscape</button>
+    </div>
+  </div>
+  <form class="form-group" onsubmit="getFrameURI(event)">
+    <input  class="form-control" placeholder="Paste URL and Hit Enter..." type="text" id="input_url">
+     <input class="btn-submit" type="submit" value="Check Responsiveness">
+  </form>
+  <div id='to-test' class="to-test">
+    <iframe id='test-iframe' src="http://mutafaf.com" width="100%" height="100%"></iframe>
+  </div>
 
-</div>
-<div id='frame-container'>
+  <footer class="footer">
+      <div id='copyright'> Developed by <a href="Mutafaf.com">Mutafaf</a>. </div>
+      <script type="text/javascript">
+        var year = (new Date()).getFullYear();
 
-</div>
+        var copyright = "Copyright © "+ year;
 
-
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(event) {
-      //insert URL here
-      var url = "https://mutafaf.github.io/";
-
-      //insert parent container ID for buttons group
-      var btnGroupParent = "btn-group-container";
-
-      //insert parent container ID for frame
-      var frameParent = "frame-container";
-
-      createPlayground(url,btnGroupParent, frameParent);
-    });
-  </script>
+        document.getElementById('copyright').append(copyright);
+      </script>
+  </footer>
 </body>
 </html>
