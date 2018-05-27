@@ -14,7 +14,7 @@ Include the test_responsive.js in head tag of your webpage.
 ```sh
 <head>
 <!-- Your can insert anywhere in head -->
-<script src="https://raw.githubusercontent.com/mutafaf/TestResponsiveness/master/test_responsiveness.js"></script>
+<script src="https://mutafaf.github.io/TestResponsiveness/test_responsiveness.js"></script>
 </head>
 ```
 
